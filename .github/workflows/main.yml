@@ -26,9 +26,13 @@ jobs:
     - name: Push to Docker Hub
       env:
         REPO: yeungjin-global-test
-        NGINX_REPO: yeungjin-global-test-nginx
       run: 
         docker push ${{secrets.DOCKER_HUB_USERNAME}}/$REPO
+
+    - name: Push to Docker Hub (nginx)
+      env:
+        NGINX_REPO: yeungjin-global-test-nginx
+      run: 
         docker push ${{secrets.DOCKER_HUB_USERNAME}}/$NGINX_REPO
   
     - name: Docker compose up in EC2

@@ -26,7 +26,10 @@ jobs:
     - name: Push to Docker Hub
       env:
         REPO: yeungjin-global-test
-      run: docker push ${{secrets.DOCKER_HUB_USERNAME}}/$REPO
+        NGINX_REPO: yeungjin-global-test-nginx
+      run: 
+        docker push ${{secrets.DOCKER_HUB_USERNAME}}/$REPO
+        docker push ${{secrets.DOCKER_HUB_USERNAME}}/$NGINX_REPO
   
     - name: Docker compose up in EC2
       uses: appleboy/ssh-action@v1.0.0
